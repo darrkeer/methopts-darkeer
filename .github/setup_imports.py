@@ -1,7 +1,7 @@
 # .github/setup_imports.py
 import sys
 import os
-from scipy import linprog
+from scipy.optimize import linprog
 import numpy as np
 
 class Simplex:
