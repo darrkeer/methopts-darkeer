@@ -1,8 +1,7 @@
 import pytest
-from lab0.my_simplex import Simplex
+from my_simplex import Simplex, EPS
 from sys import stderr
 import numpy as np
-from lab0.my_simplex import EPS
 
 def test_simple():
     A = [[1, 1], [1, 0], [0, 1]]
