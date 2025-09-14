@@ -26,8 +26,13 @@ jobs:
 
     - name: Setup fine
       run: |
-        sed -i '1,3d' lab5/bandc.py
+        sed -i '1,6d' lab5/bandc.py
         cat > temp_code.py << 'EOF'
+          import math
+          import numpy as np
+          from collections import deque
+          from scipy.optimize import linprog
+          from enum import Enum
           class Simplex:
             def __init__(self, A, b, c, bounds=None):
                 self.A = A
