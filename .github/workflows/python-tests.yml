@@ -27,6 +27,8 @@ jobs:
     - name: Setup fine
       run: |
         sed -i '1,6d' lab5/bandc.py
+        cat lab5/bandc.py
+
         cat > temp_code.py << 'EOF'
           import math
           import numpy as np
