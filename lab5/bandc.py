@@ -1,8 +1,3 @@
-import os
-import sys
-
-parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.insert(0, parent_dir)
 import math
 import numpy as np
 from collections import deque
@@ -10,7 +5,6 @@ from scipy.optimize import linprog
 from enum import Enum
 
 from simplex import Simplex
-
 
 class Constraint(Enum):
     Less = 0
