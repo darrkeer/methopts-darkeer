@@ -1,5 +1,5 @@
 import pytest
-from my_simplex import Simplex, EPS
+from simplex import Simplex, EPS
 from sys import stderr
 import numpy as np
 

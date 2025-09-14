@@ -1,10 +1,9 @@
+from simplex import Simplex
 import math
 import numpy as np
 from collections import deque
 from scipy.optimize import linprog
 from enum import Enum
-
-from simplex import Simplex
 
 class Constraint(Enum):
     Less = 0
