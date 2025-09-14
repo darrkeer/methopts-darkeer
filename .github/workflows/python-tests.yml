@@ -38,4 +38,6 @@ jobs:
         
         mv temp_code.py lab5/bandc.py
 
+        cat lab5/bandc.py
+
         python -m pytest lab5/bandc.py -v
