@@ -24,10 +24,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest numpy scipy
 
-    - name: Setup imports
+    - name: configure run test
       run: |
-        python .github/setup_imports.py
+        cat > temp_code.py << 'EOF'
+        import os
+        import sys
+        
+        parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        sys.path.insert(0, parent_dir)
+        EOF
+        
+        cat lab5/bandc.py >> temp_code.py
+        
+        mv temp_code.py lab5/bandc.py
 
-    - name: Run tests
-      run: |
-        pytest -v
+        python -m pytest lab5/bandc.py -v

@@ -1,6 +1,3 @@
-# .github/setup_imports.py
-import sys
-import os
 from scipy.optimize import linprog
 import numpy as np
 
@@ -40,11 +37,3 @@ class Simplex:
                 return np.inf, None
         except:
             return np.inf, None
-
-if __name__ == "__main__":
-    simplex_path = os.path.abspath(__file__)
-    if simplex_path not in sys.path:
-        sys.path.insert(0, simplex_path)
-        print(f"✓ Added {simplex_path} to sys.path")
-    else:
-        print("✓ Repository root already in sys.path")
