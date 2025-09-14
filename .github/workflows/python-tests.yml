@@ -24,55 +24,21 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest numpy scipy
 
-    - name: Setup fine
+        - name: Insert import code and run tests
+      
+    - name: Init testing
       run: |
-        sed -i '1,6d' lab5/bandc.py
         cat > temp_code.py << 'EOF'
-          import math
-          import numpy as np
-          from collections import deque
-          from scipy.optimize import linprog
-          from enum import Enum
-          class Simplex:
-            def __init__(self, A, b, c, bounds=None):
-                self.A = A
-                self.b = b
-                self.c = c
-                self.bounds = bounds
-
-            def solve(self):
-                n = len(self.c)
-                if self.bounds is None:
-                    bounds = [(0, 1)] * n
-                else:
-                    bounds = self.bounds
-
-                if not self.A:
-                    A_ub = None
-                    b_ub = None
-                else:
-                    A_ub = self.A
-                    b_ub = self.b
-
-                try:
-                    res = linprog(
-                        c=self.c,
-                        A_ub=A_ub,
-                        b_ub=b_ub,
-                        bounds=bounds,
-                        method="highs"
-                    )
-
-                    if res.success:
-                        return res.fun, res.x.tolist()
-                    else:
-                        return np.inf, None
-                except:
-                    return np.inf, None
-          EOF
-          cat lab5/bandc.py >> temp_code.py
-          mv temp_code.py lab5/bandc.py
-          cat lab5/bandc.py
+        import os
+        import sys
+        
+        parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../testing'))
+        sys.path.insert(0, parent_dir)
+        EOF
+        cat lab5/bandc.py >> temp_code.py
+        mv temp_code.py lab5/bandc.py
+        python -m pytest lab5/bandc.py -v
+        cat lab5/bandc.py
 
     - name: Run test
       run: |

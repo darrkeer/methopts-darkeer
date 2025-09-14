@@ -12,3 +12,4 @@ solver = BCState(g)
 sol = solver.solve()
 
 assert len(sol.tour) == len(set(sol.tour)) == 4
+
